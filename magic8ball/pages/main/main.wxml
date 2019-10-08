@@ -1,0 +1,31 @@
+<!--main.wxml-->
+<view class="container">
+  <view class="title">
+  默念心中的疑惑, 
+  触摸8号球，
+  它会告诉你答案
+  </view>
+  <block>
+    <view class="stage" bindtap="getAnswer">
+      <view class="ball">
+        <view class="shadow"></view>
+        <view class="eight {{ isTurn?'turn_around':'' }}"></view>
+        <view class="answer" wx:if="{{ answerIsShown }}">
+          <text>{{ answers[answerIndex] }}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+  
+  <block wx:if="{{ answerIsShown && answerIndex<14 }}">
+    <view>
+      <button bindtap="logout">原来如此</button>
+      <button bindtap="tryAgain">我不信，再试一次</button>
+    </view>
+  </block>
+  <block wx:elif="{{ answerIsShown }}">
+    <view>
+      <button bindtap="tryAgain">再试一次</button>
+    </view>
+  </block>
+</view>
